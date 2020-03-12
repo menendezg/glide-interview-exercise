@@ -23,7 +23,7 @@ pip-log.txt
 
 
 #virtual environment and python compile
-venv
+.venv
 *.pyc
 
 #editor
