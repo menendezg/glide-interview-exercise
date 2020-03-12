@@ -4,8 +4,12 @@ Big Corp API
 Overview:
 ------------
 
-Your task is to build a web app with a read-only JSON api for 3
-resources, employees , departments , offices , you can use any framework 
+Your task is to build a web app with a read-only JSON api for 3 resources:
+ - employees
+ - departments
+ - offices
+
+you can use any framework 
 or language for building your app.
 
 ### Data Sources
