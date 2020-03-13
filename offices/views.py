@@ -2,7 +2,7 @@ from flask import abort, jsonify
 from glide_api.app import app
 from glide_api.utils import json_reader
 
-offices = json_reader(file="offices.json", folder='offices/data')
+offices = json_reader(file="offices.json", folder="offices/data")
 
 
 @app.route("/offices", methods=["GET"])
