@@ -1,4 +1,4 @@
-from flask import Flask, abort, jsonify
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -13,5 +13,6 @@ app = Flask(__name__)
 
 # TODO: make the endpoint for the details of the offices
 # --------------------------------------------------------------------------------------
-import glide_api.offices.views
-import glide_api.departments.views
+import glide_api.office_resource.views #F401 isort:skip
+import glide_api.department_resource.views #F401 isort:skip
+# import glide_api.employee_resource.views #F401 isort:skip
