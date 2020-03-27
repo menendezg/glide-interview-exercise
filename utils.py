@@ -19,3 +19,10 @@ def json_reader(file, folder):
     :return: Dict object
     """
     return json.loads(file_reader(os.path.join(get_path(folder), file)))
+
+
+def get_keywords(query_param):
+    """
+    return a list of list of expand params
+    """
+    return [param.split('.') for param in query_param]

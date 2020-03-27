@@ -1,7 +1,7 @@
 import requests
 
 
-class ApiBigCorp():
+class ApiBigCorp:
     """
     Handle requests between controller and the api.
     """
