@@ -12,7 +12,7 @@ def get_departments():
     key_words = get_keywords(request.args.getlist("expand", None))
     handler = BusinessResource()
     departments = handler.get_all(Department, offset, limit, key_words)
-    return jsonify({"departments": departments})
+    return jsonify(departments)
 
 
 @app.route('/departments/<int:department_id>', methods=['GET'])
@@ -27,4 +27,4 @@ def get_department(department_id):
     if item is None:
         abort(404)
 
-    return jsonify({'departament': item})
+    return jsonify(item)
