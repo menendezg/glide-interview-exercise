@@ -10,10 +10,8 @@ def get_employee():
     limit = int(request.args.get("limit", "100"))
     expand_params = request.args.getlist('expand')
     key_words = get_keywords(expand_params)
-
     employee = Employee()
-
-    employees = employee.get_employee(limit, offset, key_words)
+    employees = employee.get_all(limit, offset, key_words)
     return jsonify(employees)
 
 

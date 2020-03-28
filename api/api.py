@@ -7,11 +7,10 @@ class ApiBigCorp:
     """
 
     def __init__(self):
-        self.url = 'https://rfy56yfcwk.execute-api.us-west-1.amazonaws.com/bigcorp/employees'
-        self.payload = {
-            'limit': 10,
-            'offset': 0
-        }
+        self.url = (
+            "https://rfy56yfcwk.execute-api.us-west-1.amazonaws.com/bigcorp/employees"
+        )
+        self.payload = {"limit": 10, "offset": 0}
 
     def get(self, params):
         r = requests.get(self.url, params=params)

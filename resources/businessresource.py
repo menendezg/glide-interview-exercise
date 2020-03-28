@@ -44,9 +44,6 @@ class BusinessResource():
             relationship = value.get(key, None)
             if relationship is None:
                 return value
-            if isinstance(relationship, dict):
-                value[key] = self.handle_relationship(
-                    relationship, key, data_set)
             if isinstance(relationship, int):
                 value[key] = self.get_item(relationship, data_set)
                 return value
@@ -58,6 +55,17 @@ class BusinessResource():
             'office': Office.DATA,
         }
         return resources[key]
+
+    def process_keywords(self, value, p_key, v, keywords):
+        while keywords:
+            related_key = keywords.pop(0)
+            data_set = self.get_data_set(related_key)
+            value[p_key] = self.get_relationship(
+                value[p_key],
+                related_key,
+                data_set
+            )
+        return value
 
     def handle_lists_key(self, value, keys):
         """
@@ -76,25 +84,7 @@ class BusinessResource():
                         continue
                     if isinstance(v, int):
                         value[p_key] = self.get_data(p_key, v)
-                        # data_set = self.get_data(p_key)
-                        # value[p_key] = self.get_item(v, data_set)
-                        # if p_key == 'manager':
-                        #     api = ApiBigCorp()
-                        #     payload = {'limit': 1, 'offset': v - 1}
-                        #     value[p_key] = api.get(payload)[0]
-
-                        while keywords:
-                            related_key = keywords.pop(0)
-                            data_set = self.get_data_set(related_key)
-                            value[p_key] = self.get_relationship(
-                                value[p_key],
-                                related_key,
-                                data_set
-                            )
-                        return value
-        if isinstance(value, list):
-            return [self.handle_manager_relationship(item, keys) for item in
-                    value]
+                        return self.process_keywords(value)
         if isinstance(value, int):
             return self.get_item(value)
         return value
