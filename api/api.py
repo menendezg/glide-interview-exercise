@@ -1,4 +1,5 @@
 import requests
+from glide_api.app import app
 
 
 class ApiBigCorp:
@@ -7,9 +8,7 @@ class ApiBigCorp:
     """
 
     def __init__(self):
-        self.url = (
-            "https://rfy56yfcwk.execute-api.us-west-1.amazonaws.com/bigcorp/employees"
-        )
+        self.url = (app.config['URL_DATA_SOURCE'])
         self.payload = {"limit": 10, "offset": 0}
 
     def get(self, params):

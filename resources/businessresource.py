@@ -84,7 +84,7 @@ class BusinessResource():
                         continue
                     if isinstance(v, int):
                         value[p_key] = self.get_data(p_key, v)
-                        return self.process_keywords(value)
+                        return self.process_keywords(value, p_key, v, keywords)
         if isinstance(value, int):
             return self.get_item(value)
         return value
