@@ -17,5 +17,14 @@ def get_employee():
 
 @app.route("/employees/<int:office_id>", methods=["GET"])
 def get_employee_by_id(office_id):
-    employee = Employee()
+    expand_params = request.args.getlist('expand', None)
+    key_words = get_keywords(expand_params)
+    handler = Employee()
+    if key_words:
+        employee_data = handler.get_employee_by_id(office_id)
+        for keys in key_words:
+            employee = handler.handle_lists_key(employee_data, keys)
+
+        return jsonify(employee)
+
     return jsonify(employee.get_employee_by_id(office_id))
