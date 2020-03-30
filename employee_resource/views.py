@@ -27,4 +27,4 @@ def get_employee_by_id(office_id):
 
         return jsonify(employee)
 
-    return jsonify(employee.get_employee_by_id(office_id))
+    return jsonify(handler.get_employee_by_id(office_id))
